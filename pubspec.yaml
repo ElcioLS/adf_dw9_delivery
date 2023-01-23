@@ -11,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  flutter_dotenv: ^5.0.2
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:
@@ -23,6 +25,7 @@ flutter:
 
   assets:
     - assets/images/
+    - .env
 
   fonts:
     - family: mplus1

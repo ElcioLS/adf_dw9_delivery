@@ -1,3 +1,4 @@
+import 'package:adf_dw9_delivery/app/core/config/env/env.dart';
 import 'package:adf_dw9_delivery/app/core/ui/widgets/delivery_button.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class SplashPage extends StatelessWidget {
           DeliveryButton(
             width: 200,
             height: 200,
-            label: 'Testando',
+            label: Env.instance['backend_base_url'] ?? '',
             onPressed: () {},
           ),
           TextFormField(
