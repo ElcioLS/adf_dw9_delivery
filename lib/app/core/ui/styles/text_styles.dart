@@ -11,7 +11,7 @@ class TextStyles {
 
   String get font => 'mlplus1';
 
-  TextStyle get textLigth =>
+  TextStyle get textLight =>
       TextStyle(fontWeight: FontWeight.w300, fontFamily: font);
   TextStyle get textRegular =>
       TextStyle(fontWeight: FontWeight.normal, fontFamily: font);
@@ -21,7 +21,7 @@ class TextStyles {
       TextStyle(fontWeight: FontWeight.w600, fontFamily: font);
   TextStyle get textBold =>
       TextStyle(fontWeight: FontWeight.bold, fontFamily: font);
-  TextStyle get extraBold =>
+  TextStyle get textExtraBold =>
       TextStyle(fontWeight: FontWeight.w800, fontFamily: font);
 
   TextStyle get textButtonLabel => textBold.copyWith(fontSize: 14);

@@ -30,7 +30,7 @@ class SplashPage extends StatelessWidget {
                 SizedBox(
                   height: context.screenHeight < 593.0
                       ? context.percentHeight(.10)
-                      : context.percentHeight(.30),
+                      : context.percentHeight(.10),
                 ),
                 Image.asset(
                   'assets/images/logo.png',
@@ -38,13 +38,15 @@ class SplashPage extends StatelessWidget {
                 SizedBox(
                   height: context.screenHeight < 593.0
                       ? context.percentHeight(.10)
-                      : context.percentHeight(.30),
+                      : context.percentHeight(.10),
                 ),
                 DeliveryButton(
                   width: context.percentWidth(.6),
                   height: 35,
                   label: 'ACESSAR',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).popAndPushNamed('/home');
+                  },
                 ),
               ],
             ),
