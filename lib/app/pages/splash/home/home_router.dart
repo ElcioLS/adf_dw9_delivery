@@ -1,3 +1,4 @@
+import 'package:adf_dw9_delivery/app/pages/splash/home/home_controller.dart';
 import 'package:adf_dw9_delivery/app/pages/splash/home/home_page.dart';
 import 'package:adf_dw9_delivery/app/repositories/products/products_repository.dart';
 import 'package:adf_dw9_delivery/app/repositories/products/products_repository_impl.dart';
@@ -14,6 +15,7 @@ class HomeRouter {
               dio: context.read(),
             ),
           ),
+          Provider(create: (context) => HomeController(context.read())),
         ],
         child: const HomePage(),
       );
