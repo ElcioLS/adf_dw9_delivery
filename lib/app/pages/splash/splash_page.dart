@@ -1,4 +1,3 @@
-import 'package:adf_dw9_delivery/app/core/config/env/env.dart';
 import 'package:adf_dw9_delivery/app/core/ui/helpers/size_extensions.dart';
 import 'package:adf_dw9_delivery/app/core/ui/widgets/delivery_button.dart';
 import 'package:flutter/material.dart';
@@ -9,39 +8,47 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Splash Page'),
-      ),
-      body: Column(
+        body: ColoredBox(
+      color: const Color(0xFF140E0E),
+      child: Stack(
         children: [
-          Container(),
-          DeliveryButton(
-            width: 200,
-            height: 200,
-            label: Env.instance['backend_base_url'] ?? '',
-            onPressed: () {},
-          ),
-          Text(context.screenWidth.toString()),
-          Text(context.screenHeight.toString()),
-          Row(
-            children: [
-              Container(
-                color: Colors.red,
-                width: context.percentWidth(.5),
-                height: 50,
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: SizedBox(
+              width: context.screenWidth,
+              child: Image.asset(
+                'assets/images/lanche.png',
+                fit: BoxFit.cover,
               ),
-              Container(
-                color: Colors.green,
-                width: context.percentWidth(.5),
-                height: 50,
-              ),
-            ],
+            ),
           ),
-          TextFormField(
-            decoration: const InputDecoration(labelText: 'text'),
+          Center(
+            child: Column(
+              children: [
+                Text(context.screenHeight.toString(),
+                    style: const TextStyle(color: Colors.white)),
+                SizedBox(
+                  height: context.screenHeight < 593.0
+                      ? context.percentHeight(.10)
+                      : context.percentHeight(.30),
+                ),
+                Image.asset(
+                  'assets/images/logo.png',
+                ),
+                SizedBox(
+                  height: context.screenHeight < 593.0
+                      ? context.percentHeight(.10)
+                      : context.percentHeight(.30),
+                ),
+                DeliveryButton(
+                  label: 'ACESSAR',
+                  onPressed: () {},
+                ),
+              ],
+            ),
           ),
         ],
       ),
-    );
+    ));
   }
 }
