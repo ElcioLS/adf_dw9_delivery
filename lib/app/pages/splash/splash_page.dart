@@ -1,4 +1,5 @@
 import 'package:adf_dw9_delivery/app/core/config/env/env.dart';
+import 'package:adf_dw9_delivery/app/core/ui/helpers/size_extensions.dart';
 import 'package:adf_dw9_delivery/app/core/ui/widgets/delivery_button.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,22 @@ class SplashPage extends StatelessWidget {
             height: 200,
             label: Env.instance['backend_base_url'] ?? '',
             onPressed: () {},
+          ),
+          Text(context.screenWidth.toString()),
+          Text(context.screenHeight.toString()),
+          Row(
+            children: [
+              Container(
+                color: Colors.red,
+                width: context.percentWidth(.5),
+                height: 50,
+              ),
+              Container(
+                color: Colors.green,
+                width: context.percentWidth(.5),
+                height: 50,
+              ),
+            ],
           ),
           TextFormField(
             decoration: const InputDecoration(labelText: 'text'),
