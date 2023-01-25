@@ -29,7 +29,7 @@ class HomeController extends Cubit<HomeState> {
     }
   }
 
-  void addOrUpdateBag(OrderProductDto orderProduct) {
+  void addOrUpdateCart(OrderProductDto orderProduct) {
     final productsCart = [...state.productsCart];
     productsCart.add(orderProduct);
     emit(state.copyWith(productsCart: productsCart));

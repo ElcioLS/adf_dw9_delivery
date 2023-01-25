@@ -51,8 +51,11 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
                   itemCount: state.products.length,
                   itemBuilder: (context, index) {
                     final product = state.products[index];
+                    final orders = state.productsCart
+                        .where((order) => order.product == product);
                     return ProductTile(
                       product: product,
+                      orderProduct: orders.isNotEmpty ? orders.first : null,
                     );
                   },
                 ),
