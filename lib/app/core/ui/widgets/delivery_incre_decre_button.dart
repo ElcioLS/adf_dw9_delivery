@@ -3,13 +3,13 @@ import 'package:adf_dw9_delivery/app/core/ui/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class DeliveryIncreDecreButton extends StatelessWidget {
-  final int amout;
+  final int amount;
   final VoidCallback incrementTap;
   final VoidCallback decrementTap;
 
   const DeliveryIncreDecreButton({
     super.key,
-    required this.amout,
+    required this.amount,
     required this.incrementTap,
     required this.decrementTap,
   });
@@ -35,7 +35,7 @@ class DeliveryIncreDecreButton extends StatelessWidget {
                       .copyWith(fontSize: 22, color: Colors.grey)),
             ),
           ),
-          Text(amout.toString(),
+          Text(amount.toString(),
               style: context.textStyles.textRegular
                   .copyWith(fontSize: 17, color: context.colors.secondary)),
           InkWell(

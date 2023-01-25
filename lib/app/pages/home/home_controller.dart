@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:adf_dw9_delivery/app/dto/order_product_dto.dart';
 import 'package:adf_dw9_delivery/app/repositories/products/products_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,5 +27,11 @@ class HomeController extends Cubit<HomeState> {
             errorMessage: 'Erro ao buscar produtos'),
       );
     }
+  }
+
+  void addOrUpdateBag(OrderProductDto orderProduct) {
+    final productsCart = [...state.productsCart];
+    productsCart.add(orderProduct);
+    emit(state.copyWith(productsCart: productsCart));
   }
 }
