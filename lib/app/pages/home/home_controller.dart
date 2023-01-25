@@ -35,7 +35,11 @@ class HomeController extends Cubit<HomeState> {
         .indexWhere((orderP) => orderP.product == orderProduct.product);
 
     if (orderIndex > -1) {
-      productsCart[orderIndex] = orderProduct;
+      if (orderProduct.amount == 0) {
+        productsCart.removeAt(orderIndex);
+      } else {
+        productsCart[orderIndex] = orderProduct;
+      }
     } else {
       productsCart.add(orderProduct);
     }
