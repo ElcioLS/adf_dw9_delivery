@@ -1,11 +1,11 @@
 import 'package:adf_dw9_delivery/app/core/ui/widgets/delivery_appbar.dart';
-import 'package:adf_dw9_delivery/app/pages/splash/home/home_controller.dart';
-import 'package:adf_dw9_delivery/app/pages/splash/home/widgets/product_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/ui/base_state/base_state.dart';
+import '../../core/ui/base_state/base_state.dart';
+import 'home_controller.dart';
 import 'home_state.dart';
+import 'widgets/product_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

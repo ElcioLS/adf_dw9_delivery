@@ -1,8 +1,9 @@
 import 'package:adf_dw9_delivery/app/core/ui/theme/theme_config.dart';
-import 'package:adf_dw9_delivery/app/pages/splash/home/home_router.dart';
+import 'package:adf_dw9_delivery/app/pages/product_detail/product_detail_router.dart';
 import 'package:flutter/material.dart';
 
 import 'core/provider/application_binding.dart';
+import 'pages/home/home_router.dart';
 import 'pages/splash/splash_page.dart';
 
 class Home extends StatelessWidget {
@@ -18,6 +19,7 @@ class Home extends StatelessWidget {
         routes: {
           '/': (context) => const SplashPage(),
           '/home': (context) => HomeRouter.page,
+          '/productDetail': (context) => ProductDetailRouter.page,
         },
       ),
     );

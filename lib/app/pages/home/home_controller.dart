@@ -1,8 +1,9 @@
 import 'dart:developer';
 
-import 'package:adf_dw9_delivery/app/pages/splash/home/home_state.dart';
 import 'package:adf_dw9_delivery/app/repositories/products/products_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'home_state.dart';
 
 class HomeController extends Cubit<HomeState> {
   final ProductsRepository _productsRepository;
