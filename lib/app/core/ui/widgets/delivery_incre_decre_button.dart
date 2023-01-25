@@ -3,7 +3,16 @@ import 'package:adf_dw9_delivery/app/core/ui/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class DeliveryIncreDecreButton extends StatelessWidget {
-  const DeliveryIncreDecreButton({super.key});
+  final int amout;
+  final VoidCallback incrementTap;
+  final VoidCallback decrementTap;
+
+  const DeliveryIncreDecreButton({
+    super.key,
+    required this.amout,
+    required this.incrementTap,
+    required this.decrementTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,18 +26,27 @@ class DeliveryIncreDecreButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Text('-',
-                style: context.textStyles.textMedium
-                    .copyWith(fontSize: 22, color: Colors.grey)),
+          InkWell(
+            onTap: decrementTap,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Text('-',
+                  style: context.textStyles.textMedium
+                      .copyWith(fontSize: 22, color: Colors.grey)),
+            ),
           ),
-          Text('1',
+          Text(amout.toString(),
               style: context.textStyles.textRegular
                   .copyWith(fontSize: 17, color: context.colors.secondary)),
-          Text('+',
-              style: context.textStyles.textMedium
-                  .copyWith(fontSize: 22, color: context.colors.secondary)),
+          InkWell(
+            onTap: incrementTap,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Text('+',
+                  style: context.textStyles.textMedium
+                      .copyWith(fontSize: 22, color: context.colors.secondary)),
+            ),
+          ),
         ],
       ),
     );

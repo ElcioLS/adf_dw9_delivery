@@ -1,13 +1,27 @@
+import 'package:adf_dw9_delivery/app/core/extensions/formatter_extension.dart';
 import 'package:adf_dw9_delivery/app/core/ui/helpers/size_extensions.dart';
 import 'package:adf_dw9_delivery/app/core/ui/styles/text_styles.dart';
 import 'package:adf_dw9_delivery/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:adf_dw9_delivery/app/core/ui/widgets/delivery_incre_decre_button.dart';
+import 'package:adf_dw9_delivery/app/pages/product_detail/product_detail_controller.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProductDetailPage extends StatelessWidget {
-  const ProductDetailPage({super.key});
+import '../../core/ui/base_state/base_state.dart';
+import '../../models/product_model.dart';
 
+class ProductDetailPage extends StatefulWidget {
+  final ProductModel product;
+
+  const ProductDetailPage({super.key, required this.product});
+
+  @override
+  State<ProductDetailPage> createState() => _ProductDetailPageState();
+}
+
+class _ProductDetailPageState
+    extends BaseState<ProductDetailPage, ProductDetailController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,10 +32,9 @@ class ProductDetailPage extends StatelessWidget {
           Container(
             width: context.screenWidth,
             height: context.percentHeight(.4),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(
-                    'https://assets.unileversolutions.com/recipes-v2/106684.jpg'),
+                image: NetworkImage(widget.product.image),
                 fit: BoxFit.cover,
               ),
             ),
@@ -30,18 +43,16 @@ class ProductDetailPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
-              'X-Burger',
+              widget.product.name,
               style: context.textStyles.textExtraBold.copyWith(fontSize: 22),
             ),
           ),
           const SizedBox(height: 10),
-          const Expanded(
+          Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: SingleChildScrollView(
-                child: Text(
-                  'Lanche dadadad dadaa dadad Lanche dada',
-                ),
+                child: Text(widget.product.description),
               ),
             ),
           ),
@@ -53,32 +64,50 @@ class ProductDetailPage extends StatelessWidget {
                 width: context.percentWidth(.5),
                 height: 68,
                 padding: const EdgeInsets.all(8),
-                child: const DeliveryIncreDecreButton(),
+                child: BlocBuilder<ProductDetailController, int>(
+                  builder: (context, amout) {
+                    return DeliveryIncreDecreButton(
+                      decrementTap: () {
+                        controller.decrement();
+                      },
+                      incrementTap: () {
+                        controller.increment();
+                      },
+                      amout: amout,
+                    );
+                  },
+                ),
               ),
               Container(
                 width: context.percentWidth(.5),
                 height: 68,
                 padding: const EdgeInsets.all(8),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Adicionar',
-                        style: context.textStyles.textExtraBold
-                            .copyWith(fontSize: 13),
+                child: BlocBuilder<ProductDetailController, int>(
+                  builder: (context, amout) {
+                    return ElevatedButton(
+                      onPressed: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Adicionar',
+                            style: context.textStyles.textExtraBold
+                                .copyWith(fontSize: 13),
+                          ),
+                          const SizedBox(width: 20),
+                          Expanded(
+                            child: AutoSizeText(
+                                (widget.product.price * amout).currencyPTBR,
+                                maxFontSize: 13,
+                                minFontSize: 5,
+                                maxLines: 1,
+                                textAlign: TextAlign.right,
+                                style: context.textStyles.textExtraBold),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 20),
-                      Expanded(
-                        child: AutoSizeText(r'R$ 6,99',
-                            maxFontSize: 13,
-                            minFontSize: 5,
-                            maxLines: 1,
-                            style: context.textStyles.textExtraBold),
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
             ],
