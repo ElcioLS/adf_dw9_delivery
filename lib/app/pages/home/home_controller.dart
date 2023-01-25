@@ -31,7 +31,15 @@ class HomeController extends Cubit<HomeState> {
 
   void addOrUpdateCart(OrderProductDto orderProduct) {
     final productsCart = [...state.productsCart];
-    productsCart.add(orderProduct);
+    final orderIndex = productsCart
+        .indexWhere((orderP) => orderP.product == orderProduct.product);
+
+    if (orderIndex > -1) {
+      productsCart[orderIndex] = orderProduct;
+    } else {
+      productsCart.add(orderProduct);
+    }
+
     emit(state.copyWith(productsCart: productsCart));
   }
 }
