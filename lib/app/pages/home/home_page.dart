@@ -1,4 +1,5 @@
 import 'package:adf_dw9_delivery/app/core/ui/widgets/delivery_appbar.dart';
+import 'package:adf_dw9_delivery/app/pages/home/widgets/products_cart_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -58,6 +59,12 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
                       orderProduct: orders.isNotEmpty ? orders.first : null,
                     );
                   },
+                ),
+              ),
+              Visibility(
+                visible: state.productsCart.isNotEmpty,
+                child: ProductsCartWidget(
+                  cart: state.productsCart,
                 ),
               ),
             ],
