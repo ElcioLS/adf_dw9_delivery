@@ -3,6 +3,7 @@ import 'package:adf_dw9_delivery/app/core/ui/helpers/size_extensions.dart';
 import 'package:adf_dw9_delivery/app/core/ui/styles/text_styles.dart';
 import 'package:adf_dw9_delivery/app/dto/order_product_dto.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProductsCartWidget extends StatelessWidget {
   final List<OrderProductDto> cart;
@@ -39,7 +40,9 @@ class ProductsCartWidget extends StatelessWidget {
         ),
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          _goOrder(context);
+        },
         child: Stack(
           children: [
             const Align(
@@ -66,5 +69,15 @@ class ProductsCartWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _goOrder(BuildContext context) async {
+    final navigator = Navigator.of(context);
+    final sp = await SharedPreferences.getInstance();
+    if (!sp.containsKey('accessToken')) {
+      //Envio para o Login
+      final loginResult = await navigator.pushNamed('/auth/login');
+    }
+    //Envio para o Order
   }
 }
