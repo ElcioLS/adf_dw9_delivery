@@ -13,6 +13,18 @@ class ProductsCartWidget extends StatelessWidget {
     required this.cart,
   });
 
+  Future<void> _goOrder(BuildContext context) async {
+    final navigator = Navigator.of(context);
+    final sp = await SharedPreferences.getInstance();
+    if (!sp.containsKey('accessToken')) {
+      //Envio para o Login
+      final loginResult = await navigator.pushNamed('/auth/login');
+      print(loginResult);
+      // print('Deu certo');
+    }
+    //Envio para o Order
+  }
+
   @override
   Widget build(BuildContext context) {
     var totalCart = cart
@@ -69,15 +81,5 @@ class ProductsCartWidget extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> _goOrder(BuildContext context) async {
-    final navigator = Navigator.of(context);
-    final sp = await SharedPreferences.getInstance();
-    if (!sp.containsKey('accessToken')) {
-      //Envio para o Login
-      final loginResult = await navigator.pushNamed('/auth/login');
-    }
-    //Envio para o Order
   }
 }
