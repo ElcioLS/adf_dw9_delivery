@@ -1,3 +1,4 @@
+import 'package:adf_dw9_delivery/app/core/extensions/formatter_extension.dart';
 import 'package:adf_dw9_delivery/app/core/ui/styles/colors_app.dart';
 import 'package:adf_dw9_delivery/app/core/ui/styles/text_styles.dart';
 import 'package:adf_dw9_delivery/app/core/ui/widgets/delivery_incre_decre_button.dart';
@@ -16,12 +17,13 @@ class OrderProductTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var product = orderProduct.product;
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Row(
         children: [
           Image.network(
-            'http://www.saboresajinomoto.com.br/uploads/images/recipes/sanduiche-de-churrasco.jpg',
+            product.image,
             fit: BoxFit.cover,
             width: 100,
             height: 100,
@@ -33,7 +35,7 @@ class OrderProductTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'X-Burger',
+                    product.name,
                     style:
                         context.textStyles.textRegular.copyWith(fontSize: 16),
                   ),
@@ -41,7 +43,7 @@ class OrderProductTile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '19,90',
+                        (orderProduct.amount * product.price).currencyPTBR,
                         style: context.textStyles.textMedium.copyWith(
                             fontSize: 14, color: context.colors.secondary),
                       ),
