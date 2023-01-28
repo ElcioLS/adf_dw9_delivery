@@ -13,6 +13,7 @@ enum OrderStatus {
   error,
   updateOrder,
   confirmRemoveProduct,
+  emptyCart,
 }
 
 class OrderState extends Equatable {

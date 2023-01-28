@@ -90,6 +90,10 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
               _showConfirmProductDialog(state);
             }
           },
+          emptyCart: () {
+            showInfo('Seu carrinho está vazio, adicione algum produto');
+            Navigator.pop(context, <OrderProductDto>[]);
+          },
         );
       },
       child: WillPopScope(
