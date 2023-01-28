@@ -2,7 +2,9 @@ import 'package:adf_dw9_delivery/app/core/extensions/formatter_extension.dart';
 import 'package:adf_dw9_delivery/app/core/ui/helpers/size_extensions.dart';
 import 'package:adf_dw9_delivery/app/core/ui/styles/text_styles.dart';
 import 'package:adf_dw9_delivery/app/dto/order_product_dto.dart';
+import 'package:adf_dw9_delivery/app/pages/home/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProductsCartWidget extends StatelessWidget {
@@ -15,6 +17,7 @@ class ProductsCartWidget extends StatelessWidget {
 
   Future<void> _goOrder(BuildContext context) async {
     final navigator = Navigator.of(context);
+    final controller = context.read<HomeController>();
     final sp = await SharedPreferences.getInstance();
     // sp.clear(); // // Esse comando limpa a autenticação no SharedPrefence
     if (!sp.containsKey('accessToken')) {
@@ -27,7 +30,8 @@ class ProductsCartWidget extends StatelessWidget {
     }
     //Envio para o Order
     // Navigator.of(context).pushNamed('/order'); //Não posso usar o Navigator.of aqui por te usado await dentro de uma StatelessWidget. Devo criar uma variável como acima
-    await navigator.pushNamed('/order', arguments: cart);
+    final updateCart = await navigator.pushNamed('/order', arguments: cart);
+    controller.updateCart(updateCart as List<OrderProductDto>);
   }
 
   @override
