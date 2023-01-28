@@ -16,13 +16,18 @@ class ProductsCartWidget extends StatelessWidget {
   Future<void> _goOrder(BuildContext context) async {
     final navigator = Navigator.of(context);
     final sp = await SharedPreferences.getInstance();
+    // sp.clear(); // // Esse comando limpa a autenticação no SharedPrefence
     if (!sp.containsKey('accessToken')) {
       //Envio para o Login
       final loginResult = await navigator.pushNamed('/auth/login');
-      print(loginResult);
-      // print('Deu certo');
+
+      if (loginResult == null || loginResult == false) {
+        return;
+      }
     }
     //Envio para o Order
+    // Navigator.of(context).pushNamed('/order'); //Não posso usar o Navigator.of aqui por te usado await dentro de uma StatelessWidget. Devo criar uma variável como acima
+    await navigator.pushNamed('/order', arguments: cart);
   }
 
   @override
