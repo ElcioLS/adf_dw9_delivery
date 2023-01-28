@@ -33,6 +33,9 @@ class OrderState extends Equatable {
         paymentTypes = const [],
         errorMessage = null;
 
+  double get totalOrder => orderProducts.fold(
+      0.0, (previousValue, element) => previousValue + element.totalPrice);
+
   @override
   List<Object?> get props =>
       [status, orderProducts, paymentTypes, errorMessage];
