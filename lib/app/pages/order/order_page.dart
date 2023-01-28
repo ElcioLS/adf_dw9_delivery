@@ -1,3 +1,4 @@
+import 'package:adf_dw9_delivery/app/core/extensions/formatter_extension.dart';
 import 'package:adf_dw9_delivery/app/core/ui/styles/text_styles.dart';
 import 'package:adf_dw9_delivery/app/core/ui/widgets/delivery_button.dart';
 import 'package:adf_dw9_delivery/app/dto/order_product_dto.dart';
@@ -101,16 +102,22 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             'Total do pedido',
                             style: context.textStyles.textExtraBold
                                 .copyWith(fontSize: 16),
                           ),
-                          Text(
-                            r'R$ 200',
-                            style: context.textStyles.textExtraBold
-                                .copyWith(fontSize: 20),
+                          BlocSelector<OrderController, OrderState, double>(
+                            selector: (state) => state.totalOrder,
+                            builder: (context, totalOrder) {
+                              return Text(
+                                totalOrder.currencyPTBR,
+                                style: context.textStyles.textExtraBold
+                                    .copyWith(fontSize: 20),
+                              );
+                            },
                           )
                         ],
                       ),
