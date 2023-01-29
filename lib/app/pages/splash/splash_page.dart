@@ -25,8 +25,7 @@ class SplashPage extends StatelessWidget {
           Center(
             child: Column(
               children: [
-                Text(context.screenHeight.toString(),
-                    style: const TextStyle(color: Colors.white)),
+                // Text(context.screenHeight.toString(), style: const TextStyle( color: Colors.white)), //exibe Tamanho da tela
                 SizedBox(
                   height: context.screenHeight < 593.0
                       ? context.percentHeight(.10)
