@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:adf_dw9_delivery/app/dto/order_dto.dart';
 import 'package:adf_dw9_delivery/app/dto/order_product_dto.dart';
 import 'package:adf_dw9_delivery/app/repositories/order/order_repository.dart';
 import 'package:bloc/bloc.dart';
@@ -73,5 +74,22 @@ class OrderController extends Cubit<OrderState> {
 
   emptyCart() {
     emit(state.copyWith(status: OrderStatus.emptyCart));
+  }
+
+  void saveOrder({
+    required String address,
+    required String document,
+    required int paymentMethodId,
+  }) async {
+    emit(state.copyWith(status: OrderStatus.loading));
+    await _orderRepository.saveOrder(
+      OrderDto(
+        products: state.orderProducts,
+        address: address,
+        document: document,
+        paymentMethodId: paymentMethodId,
+      ),
+    );
+    emit(state.copyWith(status: OrderStatus.success));
   }
 }

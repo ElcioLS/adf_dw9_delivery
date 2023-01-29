@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import 'core/provider/application_binding.dart';
 import 'pages/home/home_router.dart';
+import 'pages/order/order_completed_page.dart';
 import 'pages/splash/splash_page.dart';
 
 class Home extends StatelessWidget {
@@ -26,6 +27,7 @@ class Home extends StatelessWidget {
           '/auth/login': (context) => LoginRouter.page,
           '/auth/register': (context) => RegisterRouter.page,
           '/order': (context) => OrderRouter.page,
+          '/order/completed': (context) => const OrderCompletedPage(),
         },
       ),
     );
