@@ -75,7 +75,7 @@ class ProductsCartWidget extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Text(
-                'Ver Sacola',
+                'Ver Carrinho',
                 style: context.textStyles.textExtraBold.copyWith(fontSize: 14),
               ),
             ),

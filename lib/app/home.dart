@@ -1,3 +1,4 @@
+import 'package:adf_dw9_delivery/app/core/global/global_context.dart';
 import 'package:adf_dw9_delivery/app/core/ui/theme/theme_config.dart';
 import 'package:adf_dw9_delivery/app/pages/auth/login/login_router.dart';
 import 'package:adf_dw9_delivery/app/pages/auth/register/register_router.dart';
@@ -11,7 +12,11 @@ import 'pages/order/order_completed_page.dart';
 import 'pages/splash/splash_page.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  final _navKey = GlobalKey<NavigatorState>();
+
+  Home({super.key}) {
+    GlobalContext.i.navigatorKey = _navKey;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +25,7 @@ class Home extends StatelessWidget {
         title: 'Delivery App',
         debugShowCheckedModeBanner: false,
         theme: ThemeConfig.theme,
+        navigatorKey: _navKey,
         routes: {
           '/': (context) => const SplashPage(),
           '/home': (context) => HomeRouter.page,

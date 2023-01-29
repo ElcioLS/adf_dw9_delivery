@@ -5,5 +5,5 @@ import 'app/home.dart';
 
 Future<void> main() async {
   await Env.instance.load();
-  runApp(const Home());
+  runApp(Home());
 }
