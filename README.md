@@ -1,16 +1,17 @@
 # adf_dw9_delivery
 
-## Projeto Aplicativo de Delivery Vakinha Burger da Academia do Flutter
+## Projeto Aplicativo de Delivery Vakinha Burger, Academia do Flutter
 
 - Este projeto foi concluído em Janeiro de 2023.
 
 ## Sobre o projeto
-O projeto é foi muito rico em funcionalidades, estruturação e arquitetura de código. Foi bastante motivador aprender utilizar o BLoC juntamente com Provider e com uma abordagem bem simples e segura abordada pelo mestre Rodrigo Rahman. 
-O Professor tem uma didádica impressionante, e que motiva e aprimora nosso jeito de pensar e escalar a forma como desenvolvemos.
+O projeto é foi muito rico em funcionalidades, estruturação e arquitetura de código. 
+Foi bastante motivador aprender a utilizar BLoC juntamente com Provider e com uma abordagem bem simples e segura abordada pelo mestre Rodrigo Rahman. 
+O Professor tem uma didática impressionante, e que motiva e aprimora nosso jeito de pensar e escalar a forma como desenvolvemos.
 
+# Principais estruturas e conhecimentos
 - BLoC
 - Provider
-
 
 ## Versões
 A versão atual em Janeiro de 2023.
